@@ -1,24 +1,32 @@
-Shingles in the context of data mining typically refer to sets of consecutive items, such as words or tokens, used to represent and analyze sequences of data. Here's a brief overview:
+def read_integer():
+    # Read the value of k-1
+    k_minus_1 = int(input("Enter value of k-1: "))
 
-*Applications:*
-1. *Text Analysis:* Shingles are used to analyze and compare text documents for similarities and differences.
-2. *Genomic Data:* Applied in bioinformatics to analyze DNA sequences.
-3. *Web Page Comparison:* Identifying similar content on web pages.
+    # Check if the file exists
+    file_path = "E:/Documents/Pictures/Shingles.txt"
+    try:
+        with open(file_path, "r") as file:
+            lines = [line.strip() for line in file.readlines() if line.strip()]
+    except FileNotFoundError:
+        print("Error: File not found.")
+        return None
 
-*Advantages:*
-1. *Efficient Similarity Search:* Shingles simplify the process of identifying similarities between sequences, aiding in efficient search operations.
-2. *Flexibility:* Applicable to various types of data, making it versatile for different domains.
-3. *Memory Efficiency:* Shingles can be more memory-efficient than other representations, especially for large datasets.
+    # Check if the file is empty
+    if not lines:
+        print("Error: The file is empty.")
+        return None
 
-*Disadvantages:*
-1. *Sensitivity to Noise:* Shingles may be sensitive to minor variations or noise in the data, leading to potentially inaccurate results.
-2. *Parameter Tuning:* The choice of shingle size (length) can impact results, requiring careful parameter tuning.
-3. *Loss of Order Information:* Shingles disregard the order of items within a sequence, which might be crucial in some applications.
+    shingles = []
+    for i in range(len(lines) - k_minus_1 + 1):
+        shingle = lines[i:i + k_minus_1]
+        shingles.append(shingle)
 
-*Uses:*
-1. *Plagiarism Detection:* Identifying similarities between documents to detect potential plagiarism.
-2. *DNA Sequence Matching:* Analyzing genetic data for pattern recognition and comparison.
-3. *Recommendation Systems:* Utilized in collaborative filtering algorithms to find similar user preferences.
+    print(shingles)
 
-*Conclusion:*
-Shingles play a significant role in data mining by providing a flexible and efficient way to represent and analyze sequential data. While they offer advantages such as efficiency and versatility, users should be mindful of their sensitivity to noise and the potential loss of order information. Proper parameter tuning and consideration of the specific application context are essential for optimal results.
+# Call the function
+read_integer()
+
+
+
+Shingles.txt
+Have you just completed your high school studies? Are you looking for training in Science and Arts? Or are you interested in Vocational Studies? Let us guide in this amazing quest for knowledge with a variety of subjects which has a knowledge spectrum from Biological Science to Language studies, Sociology to Environmental Science, Computer Science to Political Science. Explore a brand-new world of information, practical training, and expert guidance.Do you want to shape your careers with courses in Science, Biological Science, Applied Science? Or want to make an impact in society with courses in humanities, psychology, literature? Or become a skilled employee with our vocational training programmes in Green House Management, Pharma Analytical Sciences and Tourism and Travel Management? Then go ahead and click here to enter the new world for knowledge and skill training programmes.
