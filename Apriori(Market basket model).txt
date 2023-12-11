@@ -1,5 +1,6 @@
 library(arules)
-library(arulesviz)
+library(arulesViz)
+data("Groceries")
 str(Groceries)
 inspect(Groceries)
 #read.transcations(file.choose())
@@ -18,6 +19,6 @@ gr_rules <- gr_rules[!redundant_rules]
 gr_rules
 inspect(gr_rules[1:5])
 gr_rules_beer <- apriori(Groceries, parameter = list(supp = .0001 , conf = .08),appearance =
-list(default = "rhs", lhs = "bottled beer"))
+                           list(default = "rhs", lhs = "bottled beer"))
 inspect(gr_rules_beer[1:10])
 plot(gr_rules, method = "graph", interactive = T)
