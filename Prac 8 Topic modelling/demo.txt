@@ -1,0 +1,66 @@
+#Load the necessary libraries 
+library(topicmodels) 
+library(tm)
+
+# set the working directory folder of the dataset 
+setwd("british-fiction-corpus")
+
+#load all the text files in the dataset
+filename<-list.files(path=".", pattern="*.txt") 
+filetext<-lapply(filename, readLines)
+
+# Create a corpus from the dataset
+myCorpus<-Corpus (VectorSource(filetext))
+
+#Create a custon stopwords dictionary
+custom stopwords c("the", "and", "in", "is", "it", "for", "this", "that")
+
+#treprocess the test data
+myCorpus <- tm_map(myCorpus , content_transformer(tolower))
+myCorpus <- tm_map(myCorpus , removePunctuation)
+myCorpus <- tm_map(myCorpus , removeNumbers)
+myCorpus <- tm_map(myCorpus , removeWords, stopwords)
+myCorpus <- tm_map(myCorpus , removeWords,custom_stopwords)
+myCorpus <- tm_map(myCorpus , stripWhitespace)
+
+
+
+
+# Create a document-term matrix
+dtm<-Document TermMatrix(myCorpus)
+dtm
+
+# Create a document-term matrix
+dtm<-Document TermMatrix(myCorpus)
+dtm
+
+
+#Fit the LDA model
+
+num_topics <-3 #You can choose the number of topics you want
+
+Ida model<- LDA (dtm, k =num_topics)
+
+#Explore topics
+
+topics <-terms (Ida model, 10)# Get the top 10 terms for each topic
+
+#Print the top terms in each topic
+topics
+
+
+#Create a har plot to visualize the top terms in each topic
+
+library(ggplot2)
+topic_terms<- data.frame(
+Topic= rep (1:num_topics, each = 10),
+Term unlist(topics),
+Frequency =rep(1:10, times =num_topics)
+)
+
+Term unlist (topics)
+
+ggplot(topic_terms_df, aes (x= reorder Term, -Frequency), y Frequency, fill =factor (topic))) +geom_bar (stat ="identity") +
+
+labs (title ="top Terms in Lach Topic", x= "Term", у "Frequency")+theme_minimal()+ facet_rap(~Topic, scales - "free") +
+coord_flip() + scale_fill_brewer(palette ="Set1")
