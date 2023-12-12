@@ -1,0 +1,35 @@
+Practical 1:- Data Preprocessing
+R studio
+
+Practical 2 :- Clustering
+R studio
+
+Practical 3:- Recommendation System
+Google collab
+
+Practical 4:- Collaborative Filtering
+Google  collab
+
+Practical 5 Association
+R studio
+
+Practical 6 :- Association with data set
+R studio
+
+Practical 7:- Page rank
+Python idle
+
+Practical 8:- Topic modelliy using LDA 
+R Studio
+
+Practical 9:- Minhash
+R Studio
+
+Practical 10:- Shingles
+Python idle/ R studio
+
+Practical 11:- Map reduce
+JAVA language 
+
+
+
